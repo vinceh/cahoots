@@ -8,4 +8,5 @@
 
 s = Socialcard.new
 s.username = "donkey"
+s.user_id =
 s.save!
