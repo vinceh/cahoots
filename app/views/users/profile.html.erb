@@ -1,0 +1,85 @@
+
+<div class="container profile-wrap">
+  <div class="scs">
+    <h2>check out your social cards, hoot!</h2>
+    <div class="sc">
+      <div class="cover">
+        <div class="backwash"></div>
+        <div class="create">
+          <span>Create a new Social Card</span>
+        </div>
+      </div>
+      <div class="avatar">
+        <img src="http://static.wix.com/media/bc2544_2ff35a1a2b13bc209131e1a170b80fb3.jpg_srz_309_282_85_22_0.50_1.20_0.00_jpg_srz">
+      </div>
+      <div class="content">
+        <div class="networks">
+          last edited 5 days ago
+        </div>
+        <div class="name">Jane Doe</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec urna eros. Vivamus suscipit neque et sapien tempus id pulvinar velit laoreet.</p>
+      </div>
+    </div>
+    <% @scs.each do |s| %>
+      <div class="sc">
+        <div class="avatar">
+          <img src="http://static.wix.com/media/bc2544_2ff35a1a2b13bc209131e1a170b80fb3.jpg_srz_309_282_85_22_0.50_1.20_0.00_jpg_srz">
+        </div>
+        <div class="content">
+          <div class="networks">
+            last edited 5 days ago
+          </div>
+          <div class="name"><%= s.username %> </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec urna eros. Vivamus suscipit neque et sapien tempus id pulvinar velit laoreet.</p>
+          <hr/>
+          <div class="actions">
+            <div class="permalink">
+              <div class="label">permalink</div>
+              <input type="text" value="http://test.com/rest/ful/url" readonly>
+            </div>
+            <div class="links">
+              <a>view</a>
+              &middot;
+              <a>edit</a>
+              &middot;
+              <a>delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% @scs.each do |s| %>
+      <div class="sc">
+        <div class="avatar">
+          <img src="http://static.wix.com/media/bc2544_2ff35a1a2b13bc209131e1a170b80fb3.jpg_srz_309_282_85_22_0.50_1.20_0.00_jpg_srz">
+        </div>
+        <div class="content">
+          <div class="networks">
+            last edited 5 days ago
+          </div>
+          <div class="name"><%= s.username %> </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec urna eros. Vivamus suscipit neque et sapien tempus id pulvinar velit laoreet.</p>
+          <hr/>
+          <div class="actions">
+            <div class="permalink">
+              <div class="label">permalink</div>
+              <input type="text" value="http://test.com/rest/ful/url" readonly>
+            </div>
+            <div class="links">
+              <a>view</a>
+              &middot;
+              <a>edit</a>
+              &middot;
+              <a>delete</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="tips">
+
+  </div>
+</div>
