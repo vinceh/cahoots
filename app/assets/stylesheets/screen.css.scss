@@ -18,6 +18,22 @@ body {
   color: #555;
   background-color: $bg;
   font-size: 15px;
+  &.scbody {
+    background: url("binding_dark.png");
+  }
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color:    #bbb;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #bbb;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #bbb;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:    #bbb;
 }
 
 a {
@@ -47,6 +63,7 @@ button, .btn, input[type="submit"] {
   padding: 5px 10px;
   &:hover {
     cursor: pointer;
+    text-decoration: none;
     background-color: $pd;
   }
 }
@@ -56,10 +73,11 @@ input {
   margin: 0;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="url"], input[type="email"], input[type="password"], textarea {
   outline: none;
-  padding: 8px 13px;
+  padding: 8px 10px;
   border: 1px solid #ccc;
+  font-family: $pf;
   &:focus {
     border: 1px solid #aaa;
   }
@@ -144,16 +162,33 @@ h2 {
           text-transform: uppercase;
           color: #555;
           margin: 10px;
-          border: 1px dashed #ccc;
           height: 87px;
           @include border-radius(3px);
           span {
             position: relative;
-            top: 35px;
+            display: block;
+            margin-top: 20px;
           }
+          .usage {
+            width: 100%;
+            display: table;
+            padding: 0 10px;
+            margin-top: 15px;
+            form .use {
+              margin-right: 10px;
+              float: left;
+              padding: 10px;
+              background-color: $p;
+              width: 166px;
+              font-size: 15px;
+              &:last-child .use {
+                margin-right: 0;
+              }
+            }
+          }
+
         }
         &:hover {
-          cursor: pointer;
           @include box-shadow(0 0 10px #aaa);
         }
       }
@@ -255,6 +290,164 @@ h2 {
     display: block;
     margin-top: 10px;
     font-size: 13px;
+  }
+}
+
+/* social card panel stuff */
+.edit-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 350px;
+  background: url("scbg.png");
+  overflow-y: scroll;
+  @include box-shadow(0 0 20px black);
+  .inner-box {
+    padding: 15px;
+    border-top: 1px dashed #ddd;
+    &.submit {
+      text-align: right;
+    }
+    &:first-child {
+      border-top: 0;
+    }
+    .subtitle {
+      line-height: 18px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    h3 {
+      color: $pd;
+      font-size: 18px;
+    }
+    .scinput {
+      margin-top: 10px;
+      &:first-child {
+        margin-top: 0;
+      }
+      label {
+        margin-bottom: 8px;
+        display: block;
+        font-size: 13px;
+        color: #777;
+        line-height: 1.3em;
+      }
+      input, textarea {
+        width: 100%;
+        @include box-sizing(border-box);
+      }
+      textarea {
+        height: 91px;
+      }
+      .help {
+        margin-top: 5px;
+        font-size: 11px;
+        line-height: 17px;
+        color: #999;
+      }
+    }
+    .network {
+      position: relative;
+      img {
+        position: absolute;
+        left: 0;
+      }
+      input[type="text"] {
+        padding-left: 46px;
+      }
+    }
+
+  }
+  /* angular forms */
+  .ng-invalid:focus {
+    border: 1px solid #ff8b72;
+  }
+  .ng-valid {
+    background: url('check.png');
+    background-color: white;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 98% center;
+  }
+  .ng-invalid.ng-dirty {
+    background: url('cross.png');
+    background-color: white;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 98% center;
+  }
+}
+
+.scwrap {
+  padding-left: 350px;
+  .scouter {
+    width: 550px;
+    margin: 20% auto 0;
+    .sc {
+      @include box-shadow(0 0 10px black);
+      background-color: white;
+      height: 200px;
+      font-size: 13px;
+      padding: 10px 0;
+      &>div {
+        float: left;
+        height: 100%;
+      }
+      .left {
+        width: 200px;
+        img {
+          padding: 0;
+          margin: 0;
+          width: 200px;
+        }
+      }
+      .right {
+        width: 348px;
+        h2 {
+          text-transform: none;
+        }
+        .inner {
+          padding: 0 10px;
+          position: relative;
+          height: 200px;
+          .title {
+            margin-top: 5px;
+            font-size: 15px;
+            color: #444;
+          }
+          .location {
+            color: #999;
+            margin-top: 3px;
+            font-size: 13px;
+          }
+          .desc {
+            margin-top: 10px;
+            line-height: 20px;
+            font-style: italic;
+            color: #666;
+          }
+          .links {
+            position: absolute;
+            bottom: 0;
+            font-size: 13px;
+            line-height: 20px;
+            border-top: 1px dashed #ccc;
+            width: 328px;
+            padding-top: 10px;
+            .social-links {
+              float: right;
+              .social {
+                margin-right: 3px;
+                img {
+                  height: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

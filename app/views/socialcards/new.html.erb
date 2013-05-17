@@ -1,0 +1,115 @@
+<div class="edit-panel" ng-form="scForm" novalidate>
+  <div class="inner-box">
+    <div class="scinput">
+      <input type="text" placeholder="Choose a name for your social card" ng-model="sc.username" ng-pattern="/^\S+$/" required>
+      <p class="help">
+        no spaces <br/>http://cahoots.com/{{sc.username || 'username'}}
+      </p>
+    </div>
+  </div>
+
+  <div class="inner-box">
+    <h3>Personal</h3>
+    <div class="scinput">
+      <span>Display picture</span><input type="file">
+    </div>
+    <div class="scinput">
+      <input type="text" placeholder="Name" ng-model="sc.name" required>
+    </div>
+    <div class="scinput">
+      <input type="text" placeholder="Title" ng-model="sc.title" required>
+    </div>
+    <div class="scinput">
+      <input type="email" placeholder="Email" ng-model="sc.email" required>
+    </div>
+    <div class="scinput">
+      <textarea placeholder="Description (140 characters)" ng-model="sc.description" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula quam eget mauris auctor commodo. Proin tincidunt quam ac sed.</textarea>
+    </div>
+    <div class="scinput">
+      <input placeholder="Main Website" ng-model="sc.mainWebsite" type="url" url-focuser>
+    </div>
+    <div class="scinput">
+      <input placeholder="Blog" ng-model="sc.blog" type="url">
+    </div>
+  </div>
+
+  <div class="inner-box">
+    <h3>Location</h3>
+    <div class="scinput">
+      <input type="text" placeholder="Your city" ng-model="sc.city" required>
+    </div>
+    <div class="scinput">
+      <input type="text" placeholder="Your state/province" ng-model="sc.state" required>
+    </div>
+    <div class="scinput">
+      <input type="text" placeholder="Your country" ng-model="sc.country" required>
+    </div>
+  </div>
+
+  <div class="inner-box">
+    <h3>social networks</h3>
+    <p class="subtitle">Type in the URLs of your social networks.  Leave them blank if you don't want them to appear.</p>
+    <div class="scinput network">
+      <%= image_tag "fblabel.png" %>
+      <input type="text" placeholder="Facebook" ng-model="sc.providers.facebook">
+    </div>
+    <div class="scinput network">
+      <%= image_tag "fblabel.png" %>
+      <input type="text" placeholder="LinkedIn" ng-model="sc.providers.linkedin">
+    </div>
+    <div class="scinput network">
+      <%= image_tag "fblabel.png" %>
+      <input type="text" placeholder="Twitter" ng-model="sc.providers.twitter">
+    </div>
+    <div class="scinput network">
+      <div class="scinput network">
+        <%= image_tag "fblabel.png" %>
+        <input type="text" placeholder="Google Plus" ng-model="sc.providers.googlePlus">
+      </div>
+    </div>
+    <div class="scinput network">
+      <%= image_tag "fblabel.png" %>
+      <input type="text" placeholder="Pinterest" ng-model="sc.providers.pinterest">
+    </div>
+    <div class="scinput network">
+      <%= image_tag "fblabel.png" %>
+      <input type="text" placeholder="Instagram" ng-model="sc.providers.instagram">
+    </div>
+  </div>
+
+  <div class="inner-box submit">
+    <button>Save and Close</button>
+  </div>
+
+  <%= hidden_field_tag 'socialcard', 'dummy' %>
+</div>
+
+<div class="scwrap">
+  <div class="scouter">
+    <div class="sc">
+      <div class="left">
+        <img src="http://m.c.lnkd.licdn.com/mpr/mpr/shrink_200_200/p/4/000/185/00f/3048fa9.jpg">
+      </div>
+      <div class="right">
+        <div class="inner">
+          <h2>{{sc.name || 'Name'}}</h2>
+          <div class="title">{{sc.title || 'Title'}}</div>
+          <div class="location">{{sc.city || 'City'}}, {{sc.state || 'State'}}, {{sc.country || 'Country'}}</div>
+          <p class="desc">{{sc.description || '140 character description'}}</p>
+          <div class="links">
+            <a>WEBSITE</a> &middot; <a>BLOG</a>
+            <div class="social-links">
+              <a class="social"><%= image_tag "fblabel.png" %></a>
+              <a class="social"><%= image_tag "fblabel.png" %></a>
+              <a class="social"><%= image_tag "fblabel.png" %></a>
+              <a class="social"><%= image_tag "fblabel.png" %></a>
+              <a class="social"><%= image_tag "fblabel.png" %></a>
+              <a class="social"><%= image_tag "fblabel.png" %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,9 +1,10 @@
 Kahoots::Application.routes.draw do
 
   devise_for :users do
-    get 'users', :to => 'users#profile', :as => :user_root
-    get 'profile', :to => 'users#profile', :as => :user_root_path
+    get 'profile', :to => 'users#profile', :as => :user_root
   end
+
+  post 'socialcard/new', :to => 'socialcards#new', :as => :new_socialcard
 
   root :to => 'home#index'
 end
