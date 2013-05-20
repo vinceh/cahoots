@@ -1,9 +1,67 @@
 class SocialcardsController < ApplicationController
 
+  before_filter :authenticate_user!, :only => [:new, :api_sc_upload_avatar, :api_update, :delete_socialcard]
+  before_filter :owns_sc, :only => [:api_sc_upload_avatar, :api_update, :delete_socialcard]
+
   def new
-    #@s = Socialcard.new
-    #@s.usecase = params[:type]
-    #@s.save!
+    @s = Socialcard.new
+    @s.usecase = params[:type]
+    @s.user = current_user
+    @s.save!(:validate => false)
     render :layout => "newsc"
+  end
+
+  def show
+    @s = Socialcard.where(:username => params[:username]).first
+    render :layout => "newsc"
+  end
+
+  def edit
+    @s = Socialcard.where(:username => params[:username]).first
+    render :layout => "newsc", :template => "socialcards/new.html.erb"
+  end
+
+  def destroy
+    @s = Socialcard.find(params[:id])
+
+    @s.providers.each do |p|
+      p.destroy
+    end
+
+    @s.destroy
+    redirect_to user_root_path
+  end
+
+  # API methods
+  def api_get
+    render :json => Socialcard.find(params[:id]).to_json
+  end
+
+  def api_sc_unique
+    render :json => {
+      :valid => !Socialcard.where(:username => params[:name]).first
+    }
+  end
+
+  def api_sc_upload_avatar
+    s = Socialcard.find(params[:id])
+    s.avatar = params[:avatar]
+    s.save!(:validate => false)
+    render :json => s.to_json
+  end
+
+  def api_update
+    s = Socialcard.find(params[:id])
+    params[:sc].except!(:avatar_url)
+    params[:sc].except!(:id)
+    providers = params[:sc][:providers]
+    params[:sc].except!(:providers)
+
+    if s.update_attributes(params[:sc])
+      s.create_providers(providers)
+      render :json => {:success => true}
+    else
+      render :json => {:success => false}
+    end
   end
 end

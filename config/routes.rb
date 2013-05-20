@@ -5,6 +5,15 @@ Kahoots::Application.routes.draw do
   end
 
   post 'socialcard/new', :to => 'socialcards#new', :as => :new_socialcard
+  get 'socialcard/edit/:username', :to => 'socialcards#edit', :as => :edit_socialcard
+  get ':username', :to => 'socialcards#show', :as => :show_socialcard
+  delete 'socialcard/:id', :to => 'socialcards#destroy', :as => :delete_socialcard
 
   root :to => 'home#index'
+
+  # API
+  get 'api/sc/:id', :to => 'socialcards#api_get'
+  get 'api/sc-unique/:name', :to => 'socialcards#api_sc_unique'
+  post 'api/sc/upload-avatar/:id', :to => 'socialcards#api_sc_upload_avatar'
+  put 'api/sc/update/:id', :to => 'socialcards#api_update'
 end

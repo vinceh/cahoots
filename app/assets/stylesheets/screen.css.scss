@@ -57,6 +57,12 @@ h1, h2, h3 {
   text-transform: uppercase;
 }
 
+span {
+  &.error {
+    color: #ff7052;
+  }
+}
+
 button, .btn, input[type="submit"] {
   background-color: $p;
   border: none;
@@ -65,6 +71,13 @@ button, .btn, input[type="submit"] {
     cursor: pointer;
     text-decoration: none;
     background-color: $pd;
+  }
+  &:disabled {
+    background-color: #ccc;
+    &:hover {
+      background-color: #ccc;
+      cursor: default;
+    }
   }
 }
 
@@ -100,21 +113,25 @@ h2 {
 }
 
 .header {
-  height: 125px;
-  background-color: $p;
+  height: 40px;
+  background-color: #333;
   border-bottom: 10px solid white;
   .logo {
     float: left;
     position: relative;
-    top: 35px;
     img {
-      height: 80px;
+      height: 30px;
     }
   }
   .nav {
     float: right;
     position: relative;
-    top: 85px;
+    top: 12px;
+    a {
+      margin-left: 20px;
+      color: #ddd;
+      font-size: 13px;
+    }
   }
 }
 
@@ -173,7 +190,7 @@ h2 {
             width: 100%;
             display: table;
             padding: 0 10px;
-            margin-top: 15px;
+            margin-top: 20px;
             form .use {
               margin-right: 10px;
               float: left;
@@ -181,6 +198,9 @@ h2 {
               background-color: $p;
               width: 166px;
               font-size: 15px;
+              &:hover {
+                background-color: $pd;
+              }
               &:last-child .use {
                 margin-right: 0;
               }
@@ -308,9 +328,29 @@ h2 {
     border-top: 1px dashed #ddd;
     &.submit {
       text-align: right;
+      span {
+        color: rgba(255, 117, 97, 0.88);
+        margin-right: 5px;
+        font-size: 12px;
+      }
     }
     &:first-child {
       border-top: 0;
+    }
+    .avatar-upload {
+      div {
+        font-size: 13px;
+        line-height: 15px;
+        margin-bottom: 5px;
+        img {
+          height: 13px;
+        }
+      }
+      &>img {
+        margin-top: 10px;
+        max-height: 150px;
+        border: 1px solid #ddd;
+      }
     }
     .subtitle {
       line-height: 18px;
@@ -353,8 +393,10 @@ h2 {
         position: absolute;
         left: 0;
       }
-      input[type="text"] {
+      input {
         padding-left: 46px;
+        @include border-top-left-radius(5px);
+        @include border-bottom-left-radius(5px);
       }
     }
 
@@ -368,26 +410,39 @@ h2 {
     background-color: white;
     background-size: 15px;
     background-repeat: no-repeat;
-    background-position: 98% center;
+    background-position: 98% 9px;
   }
   .ng-invalid.ng-dirty {
     background: url('cross.png');
     background-color: white;
     background-size: 15px;
     background-repeat: no-repeat;
-    background-position: 98% center;
+    background-position: 98% 9px;
   }
+  //.ng-invalid-required.ng-pristine {
+  //  background: url('required.png');
+  //  background-color: white;
+  //  background-repeat: no-repeat;
+  //  background-position: 98% 6px;
+  //}
 }
 
 .scwrap {
   padding-left: 350px;
+  &.showwrap {
+    padding-left: 0;
+    .scouter {
+      margin-top: 15%;
+    }
+  }
   .scouter {
-    width: 550px;
+    width: 625px;
     margin: 20% auto 0;
     .sc {
       @include box-shadow(0 0 10px black);
+      @include border-radius(3px);
       background-color: white;
-      height: 200px;
+      height: 225px;
       font-size: 13px;
       padding: 10px 0;
       &>div {
@@ -395,52 +450,65 @@ h2 {
         height: 100%;
       }
       .left {
-        width: 200px;
+        width: 225px;
+        overflow: hidden;
+        @include border-top-right-radius(3px);
+        @include border-bottom-right-radius(3px);
         img {
           padding: 0;
           margin: 0;
-          width: 200px;
+          width: 100%;
         }
       }
       .right {
-        width: 348px;
+        width: 398px;
         h2 {
           text-transform: none;
+          font-size: 34px;
         }
         .inner {
           padding: 0 10px;
           position: relative;
-          height: 200px;
+          height: 225px;
           .title {
-            margin-top: 5px;
-            font-size: 15px;
+            margin-top: 7px;
+            font-size: 18px;
             color: #444;
           }
           .location {
             color: #999;
-            margin-top: 3px;
-            font-size: 13px;
+            margin-top: 5px;
+            font-size: 14px;
           }
           .desc {
             margin-top: 10px;
             line-height: 20px;
             font-style: italic;
             color: #666;
+            font-size: 15px;
           }
           .links {
             position: absolute;
             bottom: 0;
-            font-size: 13px;
+            font-size: 14px;
             line-height: 20px;
             border-top: 1px dashed #ccc;
-            width: 328px;
+            width: 373px;
             padding-top: 10px;
             .social-links {
               float: right;
               .social {
                 margin-right: 3px;
+                opacity: 0.9;
+                &:hover {
+                  text-decoration: none;
+                  opacity: 1;
+                }
+                &:last-child {
+                  margin-right: 0;
+                }
                 img {
-                  height: 20px;
+                  height: 23px;
                 }
               }
             }
@@ -448,6 +516,22 @@ h2 {
         }
       }
     }
+  }
+}
+
+.corner-logo {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  color: $p;
+  font-size: 12px;
+  opacity: 0.8;
+  a {
+    font-size: 14px;
+    color: $p;
+    font-family: "Open Sans Condensed";
+    letter-spacing: 1px;
+    font-weight: bold;
   }
 }
 

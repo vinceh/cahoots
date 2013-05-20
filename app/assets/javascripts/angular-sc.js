@@ -2,14 +2,28 @@
 
 var app = angular.module('cahoots', ['cahoots.services', 'cahoots.directives']);
 
-function ScCtrl($scope, $location, Socialcard) {
-  $scope.sc = new Socialcard();
+function ScCtrl($scope, $location, Socialcard, $http) {
+  $http.defaults.headers.common ['X-CSRF-Token']=$('meta[name="csrf-token"]').attr('content');
+
   $scope.namePattern = /^\S+$/;
+
+  Socialcard.get($('#socialcard').val()).then(function(data) {
+    $scope.sc = data;
+  });
+
+  $scope.createSC = function() {
+    return $http.put('/api/sc/update/' + $scope.sc.id, {sc: $scope.sc}).then(function (response) {
+      if (response.data.success) {
+        window.location.href = "/profile";
+      }
+    });
+  };
 }
 
 angular.module('cahoots.services', [], function ($provide) {
   $provide.factory('Socialcard', function ($http) {
     var Socialcard = function (data) {
+      this.id = null;
       this.username = null;
       this.country = null;
       this.state = null;
@@ -17,7 +31,7 @@ angular.module('cahoots.services', [], function ($provide) {
       this.name = null;
       this.title = null;
       this.description = null;
-      this.mainWebsite = null;
+      this.main_website = null;
       this.email = null;
       this.blog = null;
       this.avatar_url = null;
@@ -35,14 +49,79 @@ angular.module('cahoots.services', [], function ($provide) {
     Socialcard.get = function (id) {
       return $http.get('/api/sc/' + id).then(function (response) {
         return new Socialcard(response.data);
-      })
-    }
+      });
+    };
 
     return Socialcard;
   });
 });
 
 angular.module('cahoots.directives', []).
+  directive('unique', function($http) {
+    return {
+      require: 'ngModel',
+      link: function($scope, $element, $attrs, $ctrl) {
+        $element.on('focusout', function() {
+          var val = $element.val();
+          $http.get('/api/sc-unique/' + val).then(function (response) {
+
+            if (response.data.valid) {
+              $ctrl.$setValidity('unique', true);
+            }
+            else {
+              $ctrl.$setValidity('unique', false);
+            }
+
+            return null;
+          });
+        });
+      }
+    };
+  }).
+  directive('urlFocuser',function () {
+    return {
+      restrict: 'A',
+      link: function ($scope, $element, $attrs) {
+        $element.on({
+          focusin: function() {
+            var val = $element.val();
+            if (val == "") {
+              $element.val("http://");
+              $scope.$apply();
+            }
+          }
+        });
+      }
+    }
+  }).
+  directive('scUpload',function (Socialcard) {
+    return {
+      restrict: 'A',
+      scope: {
+        sc: '=scUpload',
+        loader: '=loader'
+      },
+      link: function ($scope, $element, $attrs) {
+        $scope.$watch('sc', function(value) {
+          if ( value ) {
+            $element.fileupload({
+              dataType: 'json',
+              url: '/api/sc/upload-avatar/' + $scope.sc.id,
+              progress: function() {
+                $scope.loader = true;
+                $scope.$apply();
+              },
+              done: function (e, data) {
+                $scope.sc.avatar_url = data.result.avatar_url;
+                $scope.loader = false;
+                $scope.$apply();
+              }
+            });
+          }
+        });
+      }
+    }
+  }).
   directive('popUp',function () {
     return {
       restrict: 'A',

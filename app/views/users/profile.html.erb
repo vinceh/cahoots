@@ -37,58 +37,29 @@
     <% @scs.each do |s| %>
       <div class="sc">
         <div class="avatar">
-          <img src="http://static.wix.com/media/bc2544_2ff35a1a2b13bc209131e1a170b80fb3.jpg_srz_309_282_85_22_0.50_1.20_0.00_jpg_srz">
+          <%= image_tag s.avatar.url(:thumb) %>
         </div>
         <div class="content">
           <div class="networks">
-            last edited 5 days ago
+            last edited <%= time_ago_in_words s.updated_at %> ago
           </div>
-          <div class="name"><%= s.username %> </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec urna eros. Vivamus suscipit neque et sapien tempus id pulvinar velit laoreet.</p>
+          <div class="name"><%= s.display_name %> </div>
+          <p><%= s.description %></p>
           <hr/>
           <div class="actions">
             <div class="permalink">
               <div class="label">permalink</div>
-              <input type="text" value="http://test.com/rest/ful/url" readonly>
+              <input type="text" value="<%= request.protocol + request.host_with_port + show_socialcard_path(:username => s.username) %>" readonly>
             </div>
             <div class="links">
-              <a>view</a>
+              <%= link_to 'view', show_socialcard_path(:username => s.username), :target => "_blank" %>
               &middot;
-              <a>edit</a>
+              <%= link_to 'edit', edit_socialcard_path(:username => s.username) %>
               &middot;
-              <a>delete</a>
+              <%= link_to 'delete', delete_socialcard_path(:id => s.id), :method => "delete", :confirm => "Are you sure you want to delete this social card?" %>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-    <% @scs.each do |s| %>
-      <div class="sc">
-        <div class="avatar">
-          <img src="http://static.wix.com/media/bc2544_2ff35a1a2b13bc209131e1a170b80fb3.jpg_srz_309_282_85_22_0.50_1.20_0.00_jpg_srz">
-        </div>
-        <div class="content">
-          <div class="networks">
-            last edited 5 days ago
-          </div>
-          <div class="name"><%= s.username %> </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec urna eros. Vivamus suscipit neque et sapien tempus id pulvinar velit laoreet.</p>
-          <hr/>
-          <div class="actions">
-            <div class="permalink">
-              <div class="label">permalink</div>
-              <input type="text" value="http://test.com/rest/ful/url" readonly>
-            </div>
-            <div class="links">
-              <a>view</a>
-              &middot;
-              <a>edit</a>
-              &middot;
-              <a>delete</a>
-            </div>
-          </div>
-        </div>
-
       </div>
     <% end %>
   </div>

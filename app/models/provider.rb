@@ -1,3 +1,5 @@
 class Provider < ActiveRecord::Base
-  belongs_to :provider
+
+  validates_presence_of :provider
+  belongs_to :socialcard
 end

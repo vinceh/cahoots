@@ -1,17 +1,19 @@
 <div class="edit-panel" ng-form="scForm" novalidate>
   <div class="inner-box">
     <div class="scinput">
-      <input type="text" placeholder="Choose a name for your social card" ng-model="sc.username" ng-pattern="/^\S+$/" required>
+      <input name="username" type="text" placeholder="Choose a name for your social card" ng-model="sc.username" ng-pattern="/^\S+$/" required unique>
       <p class="help">
-        no spaces <br/>http://cahoots.com/{{sc.username || 'username'}}
+        no spaces <span class="error" ng-show="scForm.username.$invalid && sc.username">&middot; name already exists!</span> <br/>http://cahoots.com/{{sc.username || 'username'}}
       </p>
     </div>
   </div>
 
   <div class="inner-box">
     <h3>Personal</h3>
-    <div class="scinput">
-      <span>Display picture</span><input type="file">
+    <div class="scinput avatar-upload">
+      <div>Display picture <%= image_tag 'ajax-loader.gif', 'ng-show' => 'imageLoading' %></div>
+      <input type="file" name="avatar" sc-upload="sc" loader="imageLoading">
+      <img ng-src="{{sc.avatar_url}}">
     </div>
     <div class="scinput">
       <input type="text" placeholder="Name" ng-model="sc.name" required>
@@ -23,13 +25,13 @@
       <input type="email" placeholder="Email" ng-model="sc.email" required>
     </div>
     <div class="scinput">
-      <textarea placeholder="Description (140 characters)" ng-model="sc.description" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula quam eget mauris auctor commodo. Proin tincidunt quam ac sed.</textarea>
+      <textarea placeholder="Description (140 characters)" ng-model="sc.description" required></textarea>
     </div>
     <div class="scinput">
-      <input placeholder="Main Website" ng-model="sc.mainWebsite" type="url" url-focuser>
+      <input placeholder="Main Website" ng-model="sc.main_website" type="url" url-focuser>
     </div>
     <div class="scinput">
-      <input placeholder="Blog" ng-model="sc.blog" type="url">
+      <input placeholder="Blog" ng-model="sc.blog" type="url" url-focuser>
     </div>
   </div>
 
@@ -50,45 +52,45 @@
     <h3>social networks</h3>
     <p class="subtitle">Type in the URLs of your social networks.  Leave them blank if you don't want them to appear.</p>
     <div class="scinput network">
-      <%= image_tag "fblabel.png" %>
-      <input type="text" placeholder="Facebook" ng-model="sc.providers.facebook">
+      <%= image_tag "icon2_facebook_36.png" %>
+      <input placeholder="Facebook" ng-model="sc.providers.facebook" type="url" url-focuser>
     </div>
     <div class="scinput network">
-      <%= image_tag "fblabel.png" %>
-      <input type="text" placeholder="LinkedIn" ng-model="sc.providers.linkedin">
+      <%= image_tag "icon2_twitter_36.png" %>
+      <input  placeholder="LinkedIn" ng-model="sc.providers.linkedin" type="url" url-focuser>
     </div>
     <div class="scinput network">
-      <%= image_tag "fblabel.png" %>
-      <input type="text" placeholder="Twitter" ng-model="sc.providers.twitter">
+      <%= image_tag "icon2_linkedin_36.png" %>
+      <input placeholder="Twitter" ng-model="sc.providers.twitter" type="url" url-focuser>
     </div>
     <div class="scinput network">
       <div class="scinput network">
-        <%= image_tag "fblabel.png" %>
-        <input type="text" placeholder="Google Plus" ng-model="sc.providers.googlePlus">
+        <%= image_tag "icon2_googlePlus_36.png" %>
+        <input  placeholder="Google Plus" ng-model="sc.providers.googlePlus" type="url" url-focuser>
       </div>
     </div>
     <div class="scinput network">
-      <%= image_tag "fblabel.png" %>
-      <input type="text" placeholder="Pinterest" ng-model="sc.providers.pinterest">
+      <%= image_tag "icon2_pinterest_36.png" %>
+      <input placeholder="Pinterest" ng-model="sc.providers.pinterest" type="url" url-focuser>
     </div>
     <div class="scinput network">
-      <%= image_tag "fblabel.png" %>
-      <input type="text" placeholder="Instagram" ng-model="sc.providers.instagram">
+      <%= image_tag "icon2_instagram_36.png" %>
+      <input placeholder="Instagram" ng-model="sc.providers.instagram" type="url" url-focuser>
     </div>
   </div>
 
   <div class="inner-box submit">
-    <button>Save and Close</button>
+    <span ng-show="scForm.$invalid">Form is incomplete</span><button ng-click="createSC()" ng-disabled="scForm.$invalid">Save and Close</button>
   </div>
 
-  <%= hidden_field_tag 'socialcard', 'dummy' %>
+  <%= hidden_field_tag 'socialcard', @s.id %>
 </div>
 
 <div class="scwrap">
   <div class="scouter">
     <div class="sc">
       <div class="left">
-        <img src="http://m.c.lnkd.licdn.com/mpr/mpr/shrink_200_200/p/4/000/185/00f/3048fa9.jpg">
+        <img ng-src="{{sc.avatar_url}}">
       </div>
       <div class="right">
         <div class="inner">
@@ -97,14 +99,14 @@
           <div class="location">{{sc.city || 'City'}}, {{sc.state || 'State'}}, {{sc.country || 'Country'}}</div>
           <p class="desc">{{sc.description || '140 character description'}}</p>
           <div class="links">
-            <a>WEBSITE</a> &middot; <a>BLOG</a>
+            <a ng-show="sc.main_website">WEBSITE</a> &middot; <a ng-show="sc.blog">BLOG</a> &middot; <a ng-show="sc.email">EMAIL</a>
             <div class="social-links">
-              <a class="social"><%= image_tag "fblabel.png" %></a>
-              <a class="social"><%= image_tag "fblabel.png" %></a>
-              <a class="social"><%= image_tag "fblabel.png" %></a>
-              <a class="social"><%= image_tag "fblabel.png" %></a>
-              <a class="social"><%= image_tag "fblabel.png" %></a>
-              <a class="social"><%= image_tag "fblabel.png" %></a>
+              <a class="social" ng-show="sc.providers.facebook"><%= image_tag "icon2_facebook_36.png" %></a>
+              <a class="social" ng-show="sc.providers.twitter"><%= image_tag "icon2_twitter_36.png" %></a>
+              <a class="social" ng-show="sc.providers.linkedin"><%= image_tag "icon2_linkedin_36.png" %></a>
+              <a class="social" ng-show="sc.providers.googlePlus"><%= image_tag "icon2_googlePlus_36.png" %></a>
+              <a class="social" ng-show="sc.providers.pinterest"><%= image_tag "icon2_pinterest_36.png" %></a>
+              <a class="social" ng-show="sc.providers.instagram"><%= image_tag "icon2_instagram_36.png" %></a>
             </div>
           </div>
         </div>
@@ -113,3 +115,6 @@
   </div>
 </div>
 
+<%= javascript_include_tag "jquery.ui.widget" %>
+<%= javascript_include_tag "jquery.iframe-transport" %>
+<%= javascript_include_tag "jquery.fileupload" %>

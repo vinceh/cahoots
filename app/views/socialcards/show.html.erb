@@ -1,0 +1,27 @@
+<div class="scwrap showwrap">
+  <div class="scouter">
+    <div class="sc">
+      <div class="left">
+        <%= image_tag @s.avatar.url(:thumb) %>
+      </div>
+      <div class="right">
+        <div class="inner">
+          <h2><%= @s.name %></h2>
+          <div class="title"><%= @s.title %></div>
+          <div class="location"><%= @s.city %>, <%= @s.state %>, <%= @s.country %></div>
+          <p class="desc"><%= @s.description %></p>
+          <div class="links">
+            <%= raw collect_links %>
+            <div class="social-links">
+              <% @s.providers.each do |s| %>
+                <%= link_to s.url, :class => "social", :target => "_blank" do %>
+                  <%= image_tag "icon2_" + s.provider + "_36.png" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
