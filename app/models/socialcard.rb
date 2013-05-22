@@ -9,7 +9,7 @@ class Socialcard < ActiveRecord::Base
 
   has_attached_file 	:avatar,
                       :storage => :s3,
-                      :default_url => ActionController::Base.helpers.asset_path("rails.png"),
+                      :default_url => ActionController::Base.helpers.asset_path("default-avatar.jpg"),
                       :bucket => 'cahoots',
                       :s3_credentials => {
                         :access_key_id => 'AKIAI576XAU7SH57QZFA',

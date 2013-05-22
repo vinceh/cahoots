@@ -4,6 +4,7 @@
   <title>Kahoots</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery.placeholder.min" %>
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -13,15 +14,53 @@
 <body>
 
 <div class="header">
-  <div class="container">
-    <div class="logo">
-      <%= image_tag "logo.png" %>
+  <div class="top">
+    <div class="container">
+      <div class="logo">
+        <%= link_to root_url do %>
+          <%= image_tag "logo.png" %>
+        <% end %>
+      </div>
+      <div class="login">
+        <% if user_signed_in? %>
+          <div class="welcome">
+            Welcome back!
+          </div>
+        <% else %>
+
+          <%= form_for("user", :url => user_session_path) do |f| %>
+            <div class="form-chunk">
+              <div>
+                <%= f.text_field :email, :placeholder => "Email", :tabindex => "1" %>
+              </div>
+              <div>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+
+            </div>
+            <div class="form-chunk">
+              <div>
+                <%= f.password_field :password, :placeholder => "Password", :tabindex => "2" %>
+              </div>
+              <div>
+                <%= link_to "Forgot password?", new_password_path('user') %>
+              </div>
+            </div>
+            <%= f.submit 'Sign in' %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="nav">
-      <% if user_signed_in? %>
-        <%= link_to 'Edit profile', edit_user_registration_path %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% end %>
+  </div>
+  <div class="container">
+    <div class="bottom">
+      <div class="nav">
+        <% if user_signed_in? %>
+          <%= link_to 'Edit profile', edit_user_registration_path %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -29,4 +68,8 @@
 <%= yield %>
 
 </body>
+
+<script type="text/javascript">
+  $('input, textarea').placeholder();
+</script>
 </html>
