@@ -7,7 +7,7 @@
 @import "compass";
 
 $p: #aed733;
-$pd: #a1ca0f;
+$pd: #c8f436;
 $pl: #d1e29f;
 $bg: #e8f2d9;
 $pf: "Open Sans";
@@ -94,6 +94,9 @@ button, .btn, input[type="submit"] {
       cursor: default;
     }
   }
+  &:active {
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,.3));
+  }
 }
 
 input {
@@ -174,8 +177,9 @@ h2 {
   .logo {
     float: left;
     position: relative;
+    top: 5px;
     img {
-      height: 50px;
+      height: 40px;
     }
   }
   .bottom {
@@ -356,7 +360,7 @@ h2 {
             width: 100%;
             display: table;
             padding: 0 10px;
-            margin-top: 20px;
+            margin-top: 10px;
             form .use {
               margin-right: 10px;
               float: left;
@@ -445,7 +449,7 @@ h2 {
           .links {
             float: right;
             a {
-              color: $pd;
+              color: $p;
             }
           }
         }
@@ -524,7 +528,7 @@ h2 {
       margin-top: 5px;
     }
     h3 {
-      color: $pd;
+      color: $p;
       font-size: 18px;
     }
     .scinput {
