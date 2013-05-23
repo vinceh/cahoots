@@ -14,7 +14,7 @@ function ScCtrl($scope, $location, Socialcard, $http) {
   $scope.createSC = function() {
     return $http.put('/api/sc/update/' + $scope.sc.id, {sc: $scope.sc}).then(function (response) {
       if (response.data.success) {
-        window.location.href = "/profile";
+        window.location.href = response.data.redirect_url;
       }
     });
   };

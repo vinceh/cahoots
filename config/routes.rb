@@ -1,5 +1,9 @@
 Kahoots::Application.routes.draw do
 
+  devise_for :admins do
+    get 'controlpanel', :to => 'admins#controlpanel', :as => :admin_root
+  end
+
   devise_for :users do
     get 'profile', :to => 'users#profile', :as => :user_root
   end

@@ -1,6 +1,6 @@
 class SocialcardsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:new, :api_sc_upload_avatar, :api_update, :delete_socialcard]
+  before_filter :authenticate_user!, :only => [:new, :api_sc_upload_avatar, :api_update, :delete_socialcard], :unless => :admin_signed_in?
   before_filter :owns_sc, :only => [:api_sc_upload_avatar, :api_update, :delete_socialcard]
 
   def new
@@ -29,7 +29,7 @@ class SocialcardsController < ApplicationController
     end
 
     @s.destroy
-    redirect_to user_root_path
+    redirect_to redirect_url
   end
 
   # API methods
@@ -59,7 +59,10 @@ class SocialcardsController < ApplicationController
 
     if s.update_attributes(params[:sc])
       s.create_providers(providers)
-      render :json => {:success => true}
+      render :json => {
+        :success => true,
+        :redirect_url => redirect_url
+      }
     else
       render :json => {:success => false}
     end

@@ -20,6 +20,10 @@ class Socialcard < ActiveRecord::Base
                         :thumb => ["400x400"]
                       }
 
+  def self.get_all
+    Socialcard.order("created_at").all
+  end
+
   def to_json
     sc = {
       :id => id,

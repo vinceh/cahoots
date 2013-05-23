@@ -25,6 +25,10 @@ body {
   }
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .bg {
   background: url("owl.jpg");
   position: fixed;
@@ -702,6 +706,46 @@ h2 {
     font-family: "Open Sans Condensed";
     letter-spacing: 1px;
     font-weight: bold;
+  }
+}
+
+/* admins */
+.admin-cont {
+  margin-top: 50px;
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.sc-table {
+  width: 100%;
+  margin-top: 30px;
+  td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  th {
+    font-weight: bold;
+  }
+  tr {
+    background-color: #eee;
+    &:nth-child(2n) {
+      background-color: white;
+    }
+    &:first-child {
+      background-color: #555;
+      color: #eee;
+      &:hover {
+        background-color: #555;
+        color: #eee;
+      }
+    }
+    &:hover {
+      background-color: #e6e6e6;
+    }
+  }
+  a {
+    color: $p;
   }
 }
 
