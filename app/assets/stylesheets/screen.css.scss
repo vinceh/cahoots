@@ -14,12 +14,26 @@ $pf: "Open Sans";
 $tf: "Open Sans Condensed";
 $error: #ff513e;
 
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -160px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.push {
+  height: 160px;
+}
+
 body {
   font-family: $pf;
   color: #555;
   background-color: $bg;
   font-size: 15px;
-  padding-bottom: 100px;
   &.scbody {
     background: url("binding_dark.png");
   }
@@ -201,6 +215,26 @@ h2 {
         font-size: 13px;
       }
     }
+  }
+}
+
+.footer {
+  margin-top: 80px;
+  height: 80px;
+  background-color: #333;
+  width: 100%;
+
+  .container {
+    padding-top: 35px;
+    color: #ddd;
+    font-size: 13px;
+  }
+  a {
+    color: #ddd;
+
+  }
+  .social-links {
+    float: right;
   }
 }
 
@@ -706,6 +740,27 @@ h2 {
     font-family: "Open Sans Condensed";
     letter-spacing: 1px;
     font-weight: bold;
+  }
+}
+
+.static {
+  margin-top: 50px;
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  p {
+    line-height: 1.4em;
+    margin-bottom: 10px;
+  }
+  li {
+    margin-bottom: 15px;
+  }
+  .centered {
+    text-align: center;
+  }
+  .bottom {
+    margin-top: 30px;
   }
 }
 
