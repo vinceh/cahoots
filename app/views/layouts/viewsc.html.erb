@@ -4,8 +4,6 @@
   <title>Kahoots</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery.placeholder.min" %>
-  <%= javascript_include_tag "angular-sc.js" %>
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -20,15 +18,11 @@ mixpanel.init("dd13d614e0f9563cac1569914f60020a");</script><!-- end Mixpanel -->
 
   <%= csrf_meta_tags %>
 </head>
-<body class="scbody" ng-app="cahoots" ng-controller="ScCtrl" ng-cloak>
+<body class="scbody">
 
 <%= yield %>
 
 <div class="corner-logo">powered by <%= link_to "cah{o,o}ts", root_url %></div>
-
-<script>
-  $('input, textarea').placeholder();
-</script>
 
 </body>
 </html>

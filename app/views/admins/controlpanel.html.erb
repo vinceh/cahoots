@@ -2,32 +2,26 @@
   <h2>Welcome back, Admin!</h2>
   <p>There are currently <span class="bold"><%= @s.length %></span> Socialcards in the system.</p>
 
+  <p><%= link_to "Statistics", admin_stats_path %></p>
+
   <table class="sc-table">
     <tr>
-      <th>
-        User
-      </th>
-      <th>
-        Social Card ID
-      </th>
-      <th>
-        Date Created
-      </th>
-      <th>
-        Actions
-      </th>
+      <th> User </th>
+      <th> Social Card ID </th>
+      <th> Type </th>
+      <th> Location </th>
+      <th> Networks </th>
+      <th> Date Created </th>
+      <th> Actions </th>
     </tr>
     <% @s.each do |s| %>
       <tr>
-        <td>
-          <%= s.name %>
-        </td>
-        <td>
-          <%= s.username %>
-        </td>
-        <td>
-          <%= s.created_at.strftime("%b %d, %Y") %>
-        </td>
+        <td> <%= s.name %> </td>
+        <td> <%= s.username %> </td>
+        <td> <%= s.usecase %></td>
+        <td> <%= s.city %>, <%= s.state %>, <%= s.country %></td>
+        <td> <%= s.providers.length %></td>
+        <td> <%= s.created_at.strftime("%b %d, %Y") %> </td>
         <td>
           <%= link_to "view", show_socialcard_path(:username => s.username), :target => "_blank" %>
           &middot;
