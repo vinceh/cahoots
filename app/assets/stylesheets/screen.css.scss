@@ -32,10 +32,12 @@ html, body {
 body {
   font-family: $pf;
   color: #555;
-  background-color: $bg;
+
   font-size: 15px;
+  background: url('paper_fibers.png');
   &.scbody {
     background: url("binding_dark.png");
+    overflow: hidden;
   }
 }
 
@@ -478,7 +480,7 @@ h2 {
               outline: none;
               font-size: 12px;
               padding: 0 5px;
-              width: 210px;
+              width: 190px;
               border: 1px solid #ccc;
               color: #777;
               margin: 0;

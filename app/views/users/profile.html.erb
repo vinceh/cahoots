@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="avatar">
-        <img src="http://static.wix.com/media/bc2544_2ff35a1a2b13bc209131e1a170b80fb3.jpg_srz_309_282_85_22_0.50_1.20_0.00_jpg_srz">
+        <%= image_tag 'default-avatar.jpg' %>
       </div>
       <div class="content">
         <div class="networks">
@@ -48,7 +48,7 @@
           <hr/>
           <div class="actions">
             <div class="permalink">
-              <div class="label">permalink</div>
+              <div class="label">this is your link</div>
               <input type="text" value="<%= request.protocol + request.host_with_port + show_socialcard_path(:username => s.username) %>" readonly>
             </div>
             <div class="links">
