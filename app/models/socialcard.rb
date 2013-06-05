@@ -3,9 +3,11 @@ class Socialcard < ActiveRecord::Base
   belongs_to :user
   has_many :providers
 
-  validates_presence_of :usecase, :username, :country, :state, :city, :name, :title, :description, :email
+  validates_presence_of :usecase, :username, :name, :description, :email
 
   attr_accessible :usecase, :username, :country, :state, :city, :name, :title, :description, :email, :main_website, :blog
+
+  validates :description, :length => { :maximum => 140 }
 
   has_attached_file 	:avatar,
                       :storage => :s3,

@@ -16,11 +16,11 @@ module ApplicationHelper
     links = []
 
     if @s.main_website
-      links << link_to("WEBSITE", @s.main_website)
+      links << link_to("WEBSITE", @s.main_website, :target => "_blank")
     end
 
     if @s.blog
-      links << link_to("BLOG", @s.blog)
+      links << link_to("BLOG", @s.blog, :target => "_blank")
     end
 
     if @s.email

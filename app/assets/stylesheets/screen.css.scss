@@ -96,6 +96,11 @@ span {
   }
 }
 
+.error {
+  color: #ff7052;
+  font-size: 12px;
+}
+
 button, .btn, input[type="submit"] {
   background-color: $p;
   border: none;
@@ -536,6 +541,9 @@ h2 {
   .inner-box {
     padding: 15px;
     border-top: 1px dashed #ddd;
+    .error {
+      margin-top: 3px;
+    }
     &.submit {
       text-align: right;
       span {

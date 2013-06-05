@@ -19,22 +19,22 @@
       <input type="text" placeholder="Name" ng-model="sc.name" required>
     </div>
     <div class="scinput">
-      <input type="text" placeholder="Title" ng-model="sc.title" required>
+      <input type="text" placeholder="Title" ng-model="sc.title">
     </div>
     <div class="scinput">
       <input type="email" placeholder="Email" ng-model="sc.email" required>
     </div>
     <div class="scinput">
-      <input type="text" placeholder="Your city" ng-model="sc.city" required>
+      <input type="text" placeholder="Your city" ng-model="sc.city">
     </div>
     <div class="scinput">
-      <input type="text" placeholder="Your state/province" ng-model="sc.state" required>
+      <input type="text" placeholder="Your state/province" ng-model="sc.state">
     </div>
     <div class="scinput">
-      <input type="text" placeholder="Your country" ng-model="sc.country" required>
+      <input type="text" placeholder="Your country" ng-model="sc.country">
     </div>
     <div class="scinput">
-      <textarea placeholder="Description (140 characters)" ng-model="sc.description" required></textarea>
+      <textarea placeholder="Description (140 characters)" ng-model="sc.description" required ng-maxlength="140"></textarea>
     </div>
     <div class="scinput">
       <input placeholder="Main Website" ng-model="sc.main_website" type="url" url-focuser>
