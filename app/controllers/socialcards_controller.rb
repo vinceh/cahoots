@@ -13,6 +13,7 @@ class SocialcardsController < ApplicationController
 
   def show
     @s = Socialcard.where(:username => params[:username]).first
+    @show = true
     render :layout => "viewsc"
   end
 

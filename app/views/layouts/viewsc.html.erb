@@ -22,7 +22,12 @@ mixpanel.init("dd13d614e0f9563cac1569914f60020a");</script><!-- end Mixpanel -->
 
 <%= yield %>
 
-<div class="corner-logo">powered by <%= link_to "cah{o,o}ts", root_url %></div>
+<div class="corner-logo">
+  powered by <%= link_to "cah{o,o}ts", root_url %>
+  <% if @show %>
+  <br/><%= link_to "create your own", new_user_registration_path %>
+  <% end %>
+</div>
 
 </body>
 </html>

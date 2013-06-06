@@ -750,6 +750,13 @@ h2 {
     font-family: "Open Sans Condensed";
     letter-spacing: 1px;
     font-weight: bold;
+    &:last-child {
+      float: right;
+      margin-top: 5px;
+      font-family: "Open Sans";
+      font-size: 12px;
+      letter-spacing: 0;
+    }
   }
 }
 
