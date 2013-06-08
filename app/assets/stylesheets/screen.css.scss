@@ -744,20 +744,30 @@ h2 {
   color: $p;
   font-size: 12px;
   opacity: 0.8;
+  text-align: right;
   a {
     font-size: 14px;
     color: $p;
     font-family: "Open Sans Condensed";
     letter-spacing: 1px;
     font-weight: bold;
-    &:last-child {
+    &:first-child {
       float: right;
-      margin-top: 5px;
+      margin-bottom: 5px;
       font-family: "Open Sans";
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 0;
+      color: #eee;
     }
   }
+}
+
+.copyright {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  font-size: 11px;
+  color: #aaa;
 }
 
 .static {
