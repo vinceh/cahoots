@@ -756,13 +756,38 @@ h2 {
   color: $p;
   font-size: 12px;
   opacity: 0.8;
+  text-align: right;
   a {
     font-size: 14px;
     color: $p;
     font-family: "Open Sans Condensed";
     letter-spacing: 1px;
     font-weight: bold;
+    &.creat-own {
+      float: right;
+      margin-bottom: 5px;
+      font-family: "Open Sans";
+      font-size: 13px;
+      letter-spacing: 0;
+      color: #ddd;
+      background-color: #222;
+      padding: 10px 15px;
+      @include border-radius(3px);
+      @include box-shadow(0 0 5px #111);
+      &:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
+}
+
+.copyright {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  font-size: 11px;
+  color: #aaa;
 }
 
 .static {
