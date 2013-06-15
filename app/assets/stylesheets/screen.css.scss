@@ -242,6 +242,18 @@ h2 {
   }
   .social-links {
     float: right;
+    img {
+      height: 25px;
+      position: relative;
+      top: -8px;
+    }
+    a {
+      opacity: 0.8;
+      &:hover {
+        text-decoration: none;
+        opacity: 1;
+      }
+    }
   }
 }
 

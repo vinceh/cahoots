@@ -87,7 +87,18 @@ mixpanel.init("dd13d614e0f9563cac1569914f60020a");</script><!-- end Mixpanel -->
     <%= link_to "HELP", "http://cahootsblog.com/" %>
 
     <div class="social-links">
-      <%= link_to "FACEBOOK", "http://cahootsblog.com/" %>
+      <%= link_to "https://www.facebook.com/cahootspage", :target => "_blank" do %>
+        <%= image_tag "facebook.png" %>
+      <% end %>
+      <%= link_to "https://twitter.com/cahootstweets", :target => "_blank" do %>
+        <%= image_tag "twitter.png" %>
+      <% end %>
+      <%= link_to "http://pinterest.com/cahootspins", :target => "_blank" do %>
+        <%= image_tag "pinterest.png" %>
+      <% end %>
+      <%= link_to "http://instagram.com/instacahoots", :target => "_blank" do %>
+        <%= image_tag "instagram.png" %>
+      <% end %>
     </div>
   </div>
 </div>
