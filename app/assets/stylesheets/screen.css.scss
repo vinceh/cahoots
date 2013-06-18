@@ -242,6 +242,18 @@ h2 {
   }
   .social-links {
     float: right;
+    img {
+      height: 25px;
+      position: relative;
+      top: -8px;
+    }
+    a {
+      opacity: 0.8;
+      &:hover {
+        text-decoration: none;
+        opacity: 1;
+      }
+    }
   }
 }
 
@@ -790,6 +802,8 @@ h2 {
   }
   li {
     margin-bottom: 15px;
+    margin-left: 20px;
+    list-style-type: circle;
   }
   .centered {
     text-align: center;
