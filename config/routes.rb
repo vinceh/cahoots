@@ -1,7 +1,5 @@
 Kahoots::Application.routes.draw do
 
-  get 'about', :to => 'home#about', :as => :about
-
   devise_for :admins do
     get 'controlpanel', :to => 'admins#controlpanel', :as => :admin_root
     get 'controlpanel/stats', :to => 'admins#stats', :as => :admin_stats
@@ -15,6 +13,8 @@ Kahoots::Application.routes.draw do
   get 'socialcard/edit/:username', :to => 'socialcards#edit', :as => :edit_socialcard
   delete 'socialcard/:id', :to => 'socialcards#destroy', :as => :delete_socialcard
   root :to => 'home#index'
+
+  get 'about', :to => 'home#about', :as => :about
 
   # API
   get 'api/sc/:id', :to => 'socialcards#api_get'
