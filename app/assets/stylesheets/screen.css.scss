@@ -518,6 +518,10 @@ h2 {
     padding-left: 30px;
     width: 269px;
     border-left: 1px solid $pl;
+    line-height: 1.6em;
+    p {
+      margin-bottom: 15px;
+    }
   }
 }
 
