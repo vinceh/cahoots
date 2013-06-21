@@ -15,6 +15,8 @@ Kahoots::Application.routes.draw do
   root :to => 'home#index'
 
   get 'about', :to => 'home#about', :as => :about
+  get 'terms', :to => 'home#terms', :as => :terms
+  get 'privacy', :to => 'home#privacy', :as => :privacy
 
   # API
   get 'api/sc/:id', :to => 'socialcards#api_get'

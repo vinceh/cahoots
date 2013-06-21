@@ -293,6 +293,9 @@ h2 {
         }
       }
     }
+    a {
+      color: white;
+    }
   }
 }
 
@@ -316,8 +319,13 @@ h2 {
       }
       &>div {
         margin-bottom: 13px;
-        &.tos label {
-          @include inline-block;
+        &.tos {
+          label {
+            @include inline-block;
+          }
+          a {
+            @include inline-block;
+          }
         }
         .hint {
           font-size: 12px;
@@ -800,6 +808,10 @@ h2 {
     margin-top: 20px;
     margin-bottom: 15px;
   }
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
   p {
     line-height: 1.4em;
     margin-bottom: 10px;
@@ -814,6 +826,15 @@ h2 {
   }
   .bottom {
     margin-top: 30px;
+  }
+  .sub {
+    text-decoration: underline;
+  }
+  .indent {
+    margin-left: 30px;
+  }
+  .bold {
+    font-weight: bold;
   }
 }
 
