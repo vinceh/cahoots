@@ -40,7 +40,7 @@ class SocialcardsController < ApplicationController
 
   def api_sc_unique
     render :json => {
-      :valid => !Socialcard.where(:username => params[:name]).first
+      :valid => !Socialcard.where(:username => params[:name].downcase).first
     }
   end
 

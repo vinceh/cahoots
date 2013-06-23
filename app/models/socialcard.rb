@@ -8,6 +8,8 @@ class Socialcard < ActiveRecord::Base
   attr_accessible :usecase, :username, :country, :state, :city, :name, :title, :description, :email, :main_website, :blog
 
   validates :description, :length => { :maximum => 140 }
+  validate :unique_username
+  before_save :downcase_username
 
   has_attached_file 	:avatar,
                       :storage => :s3,
@@ -21,6 +23,16 @@ class Socialcard < ActiveRecord::Base
                       :styles => {
                         :thumb => ["400x400"]
                       }
+
+  def unique_username
+    if Socialcard.where(:username => username.downcase).first
+      errors.add(:username, " already exists")
+    end
+  end
+
+  def downcase_username
+    self.username.downcase! if self.username
+  end
 
   def self.get_all
     Socialcard.order("created_at").all
