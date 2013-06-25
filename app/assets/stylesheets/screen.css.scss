@@ -661,12 +661,12 @@ h2 {
     background-repeat: no-repeat;
     background-position: 98% 9px;
   }
-  //.ng-invalid-required.ng-pristine {
-  //  background: url('required.png');
-  //  background-color: white;
-  //  background-repeat: no-repeat;
-  //  background-position: 98% 6px;
-  //}
+  .ng-invalid-required.ng-pristine {
+    background: url('required.png');
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: 98% 6px;
+  }
 }
 
 .scwrap {
