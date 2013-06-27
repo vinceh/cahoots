@@ -25,7 +25,8 @@ class Socialcard < ActiveRecord::Base
                       }
 
   def unique_username
-    if Socialcard.where(:username => username.downcase).first
+    s = Socialcard.where(:username => username.downcase).first
+    if s.id != self.id
       errors.add(:username, " already exists")
     end
   end
