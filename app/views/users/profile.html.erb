@@ -36,23 +36,27 @@
           <%= image_tag s.avatar.url(:thumb) %>
         </div>
         <div class="content">
-          <div class="networks">
-            last edited <%= time_ago_in_words s.updated_at %> ago
+          <div class="links">
+            <%= link_to 'view', show_socialcard_path(:username => s.username), :target => "_blank" %>
+            &middot;
+            <%= link_to 'edit', edit_socialcard_path(:username => s.username) %>
+            &middot;
+            <%= link_to 'delete', delete_socialcard_path(:id => s.id), :method => "delete", :confirm => "Are you sure you want to delete this social card?" %>
           </div>
           <div class="name"><%= s.display_name %> </div>
+          <p class="networks">
+            last edited <%= time_ago_in_words s.updated_at %> ago
+          </p>
           <p><%= s.description %></p>
           <hr/>
           <div class="actions">
             <div class="permalink">
-              <div class="label">this is your link</div>
+              <div class="label">your link</div>
               <input type="text" value="<%= request.protocol + request.host_with_port + show_socialcard_path(:username => s.username) %>" readonly>
             </div>
-            <div class="links">
-              <%= link_to 'view', show_socialcard_path(:username => s.username), :target => "_blank" %>
-              &middot;
-              <%= link_to 'edit', edit_socialcard_path(:username => s.username) %>
-              &middot;
-              <%= link_to 'delete', delete_socialcard_path(:id => s.id), :method => "delete", :confirm => "Are you sure you want to delete this social card?" %>
+            <div class="permalink">
+              <div class="label">embed code</div>
+              <input type="text" value="<iframe width=&quot;650&quot; height=&quot;270&quot; src=&quot;<%= request.protocol + request.host_with_port + iframe_show_socialcard_path(:username => s.username) %>&quot;></iframe>" readonly>
             </div>
           </div>
         </div>
@@ -68,3 +72,11 @@
     <p>To get started, simply choose "personal use" or "professional use" under "CREATE A NEW SOCIAL CARD" and it will take you to an interactive Social Card creator.</p>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(window).load(function() {
+    $('.permalink input').click(function() {
+      $(this).select();
+    });
+  })
+</script>

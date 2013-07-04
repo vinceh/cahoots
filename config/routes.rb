@@ -25,4 +25,5 @@ Kahoots::Application.routes.draw do
   put 'api/sc/update/:id', :to => 'socialcards#api_update'
 
   get ':username', :to => 'socialcards#show', :as => :show_socialcard
+  get 'frame/:username', :to => 'socialcards#iframe_show', :as => :iframe_show_socialcard
 end

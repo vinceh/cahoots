@@ -452,6 +452,17 @@ h2 {
       }
       .avatar {
         width: 75px;
+        a {
+          display: block;
+          background-color: #eee;
+          padding: 5px;
+          text-align: center;
+          font-size: 13px;
+          margin-top: 8px;
+          &:hover {
+            text-decoration: none;
+          }
+        }
         img {
           width: 75px;
         }
@@ -463,12 +474,21 @@ h2 {
         line-height: 21px;
         position: relative;
         .networks {
-          position: absolute;
-          top: 0;
-          right: 0;
           font-size: 12px;
-          color: #999;
+          color: #888;
+          font-style: italic;
           line-height: 12px;
+          margin-bottom: 5px;
+        }
+        .links {
+          a {
+            color: $p;
+          }
+          position: absolute;
+          top: 0px;
+          right: 0;
+          font-size: 13px;
+          line-height: 13px;
         }
         .name {
           font-family: $tf;
@@ -486,6 +506,10 @@ h2 {
           width: 100%;
           .permalink {
             float: left;
+            margin-top: 10px;
+            &:first-child {
+              margin-top: 0;
+            }
             .label {
               float: left;
               background-color: #ddd;
@@ -497,6 +521,8 @@ h2 {
               font-weight: bold;
               border: 1px solid #ccc;
               height: 11px;
+              width: 72px;
+              text-align: center;
             }
             input {
               float: left;
@@ -505,13 +531,17 @@ h2 {
               outline: none;
               font-size: 12px;
               padding: 0 5px;
-              width: 190px;
+              width: 328px;
               border: 1px solid #ccc;
               color: #777;
               margin: 0;
+              &:hover {
+                cursor: pointer;
+              }
             }
           }
           .links {
+            margin-top: 5px;
             float: right;
             a {
               color: $p;
@@ -877,5 +907,20 @@ h2 {
   a {
     color: $p;
   }
+}
+
+.frame-body {
+  background: none;
+  height: auto;
+  .scwrap.showwrap {
+    .scouter {
+      margin: 10px;
+      .sc {
+        border: 1px solid #aaa;
+        @include box-shadow(0 0 10px #aaa);
+      }
+    }
+  }
+
 }
 

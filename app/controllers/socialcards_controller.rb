@@ -17,6 +17,12 @@ class SocialcardsController < ApplicationController
     render :layout => "viewsc"
   end
 
+  def iframe_show
+    @s = Socialcard.where(:username => params[:username].downcase).first
+    @show = true
+    render "show", :layout => "iframesc"
+  end
+
   def edit
     @s = Socialcard.where(:username => params[:username]).first
     render :layout => "newsc", :template => "socialcards/new.html.erb"
