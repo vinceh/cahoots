@@ -30,4 +30,10 @@
       </tr>
     <% end %>
   </table>
+  <% if @cards.length == 0 %>
+    <h2>no saved social cards yet...</h2>
+    <p>
+      Once you start saving Social Cards, they will appear here and act like your online rolodex.
+    </p>
+  <% end %>
 </div>

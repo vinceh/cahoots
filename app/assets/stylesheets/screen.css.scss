@@ -998,6 +998,9 @@ h2 {
 }
 
 .saved-cards {
+  h2 {
+    margin-bottom: 20px;
+  }
   table {
     margin: 100px 0;
     @include box-shadow(0 0 15px #ccc);
