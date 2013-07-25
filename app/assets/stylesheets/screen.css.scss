@@ -734,7 +734,33 @@ h2 {
         }
       }
       .right {
+        position: relative;
         width: 398px;
+        .check {
+          position: absolute;
+          right: 10px;
+          top: 0;
+          img {
+            height: 12px;
+          }
+        }
+        .save-social {
+          position: absolute;
+          right: -12px;
+          bottom: -53px;
+          padding: 5px 10px;
+          @include border-radius(3px);
+          input[type="submit"] {
+            background-color: transparent;
+            padding: 5px 10px;
+            color: #ddd;
+            margin: 0;
+            &:hover {
+              color: black;
+              background-color: $p;
+            }
+          }
+        }
         h2 {
           text-transform: none;
           font-size: 34px;
@@ -950,7 +976,7 @@ h2 {
     top: 40px;
     right: 0;
     background-color: #444;
-    width: 140px;
+    width: 160px;
     @include border-bottom-right-radius(3px);
     @include border-bottom-left-radius(3px);
     a {
@@ -966,6 +992,90 @@ h2 {
       &:hover {
         background-color: #555;
         text-decoration: none;
+      }
+    }
+  }
+}
+
+.saved-cards {
+  table {
+    margin: 100px 0;
+    @include box-shadow(0 0 15px #ccc);
+    @include border-radius(5px);
+    overflow: hidden;
+    tr {
+      &:nth-child(2n) td {
+        background-color: #f6f6f6;
+      }
+    }
+    .saved-sc {
+      td {
+        padding: 15px;
+        background-color: white;
+      }
+      .avatar {
+        padding: 15px;
+        img {
+          height: 107px;
+        }
+      }
+      .contact {
+        width: 50%;
+        padding: 0;
+        .info {
+          padding: 15px;
+          line-height: 1.4em;
+          div:first-child {
+            font-weight: bold;
+          }
+        }
+        .links {
+          border-top: 1px solid #eee;
+          padding: 15px;
+          a {
+            &:hover {
+              text-decoration: none;
+            }
+          }
+          div {
+            line-height: 1.4em;
+            &:first-child {
+              margin-bottom: 10px;
+            }
+          }
+          a {
+            font-size: 13px;
+            img {
+              position: relative;
+              top: 2px;
+              height: 13px;
+              opacity: 0.8;
+              margin-left: 3px;
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+      .desc {
+        font-style: italic;
+        color: #888;
+        vertical-align: top;
+        width: 50%;
+      }
+      .actions {
+        a, input[type="submit"] {
+          background-color: #d6d6d6;
+          display: block;
+          margin: 10px 0;
+          text-align: center;
+          font-size: 13px;
+          color: #666;
+          &:hover {
+            background-color: #ddd;
+          }
+        }
       }
     }
   }

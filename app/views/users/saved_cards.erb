@@ -1,0 +1,33 @@
+<div class="container saved-cards">
+  <table>
+    <% @cards.each do |c| %>
+      <tr class="saved-sc">
+        <td class="avatar">
+          <%= image_tag c.avatar.url(:thumb) %>
+        </td>
+        <td class="contact">
+          <div class="info">
+            <div><%= c.name %></div>
+            <div><%= c.title %></div>
+            <div><%= c.city %>, <%= c.state %>, <%= c.country %></div>
+          </div>
+          <div class="links">
+            <%= raw collect_links(c) %>
+            <% c.providers.each do |s| %>
+              <%= link_to s.url, :class => "social", 'data-network' => s.provider, :target => "_blank" do %>
+                <%= image_tag "icon2_" + s.provider + "_36.png" %>
+              <% end %>
+            <% end %>
+          </div>
+        </td>
+        <td class="desc">
+          <%= c.description %>
+        </td>
+        <td class="actions">
+          <%= link_to "View", show_socialcard_path(c.username), :class => 'btn', :target => '_blank' %>
+          <%= button_to "Remove", user_remove_card_path(c.id), :class => 'btn', :target => '_blank'%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

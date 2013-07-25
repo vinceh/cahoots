@@ -69,6 +69,7 @@ mixpanel.init("dd13d614e0f9563cac1569914f60020a");</script><!-- end Mixpanel -->
               <div class="me">Account</div>
               <div class="me-links">
                 <%= link_to 'My Social Cards', user_root_path %>
+                <%= link_to 'Saved Social Cards', user_saved_cards_path %>
                 <%= link_to 'Edit Settings', edit_user_registration_path %>
                 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
               </div>

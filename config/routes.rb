@@ -7,6 +7,9 @@ Kahoots::Application.routes.draw do
 
   devise_for :users do
     get 'profile', :to => 'users#profile', :as => :user_root
+    get 'cards/saved', :to => 'users#saved_cards', :as => :user_saved_cards
+    post 'cards/save/:id', :to => 'users#save_card', :as => :user_save_card
+    post 'cards/remove/:id', :to => 'users#remove_card', :as => :user_remove_card
   end
 
   post 'socialcard/new', :to => 'socialcards#new', :as => :new_socialcard

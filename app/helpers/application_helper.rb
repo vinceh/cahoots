@@ -11,20 +11,20 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def collect_links
+  def collect_links(c)
 
     links = []
 
-    if @s.main_website
-      links << link_to("WEBSITE", @s.main_website, :target => "_blank")
+    if c.main_website
+      links << link_to("WEBSITE", c.main_website, :target => "_blank")
     end
 
-    if @s.blog
-      links << link_to("BLOG", @s.blog, :target => "_blank")
+    if c.blog
+      links << link_to("BLOG", c.blog, :target => "_blank")
     end
 
-    if @s.email
-      links << link_to("EMAIL", "mailto:"+@s.email)
+    if c.email
+      links << link_to("EMAIL", "mailto:"+c.email)
     end
 
     links.join(" &middot; ")

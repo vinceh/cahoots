@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
   has_many :socialcards
+  has_many :savedcards
+  has_many :cards, through: :savedcards, source: :socialcard
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable

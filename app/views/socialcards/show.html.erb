@@ -5,13 +5,22 @@
         <%= image_tag @s.avatar.url(:thumb) %>
       </div>
       <div class="right">
+        <% if current_user && !current_user.cards.where(:id => @s.id).first %>
+          <div class="save-social">
+            <%= button_to "Save Social Card", user_save_card_path(@s.id) %>
+          </div>
+        <% else %>
+          <div class="check">
+            <%= image_tag 'check.png' %>
+          </div>
+        <% end %>
         <div class="inner">
           <h2><%= @s.name %></h2>
           <div class="title"><%= @s.title %></div>
           <div class="location"><%= @s.city %>, <%= @s.state %>, <%= @s.country %></div>
           <p class="desc"><%= @s.description %></p>
           <div class="links">
-            <%= raw collect_links %>
+            <%= raw collect_links(@s) %>
             <div class="social-links">
               <% @s.providers.each do |s| %>
                 <%= link_to s.url, :class => "social", 'data-network' => s.provider, :target => "_blank" do %>
