@@ -68,7 +68,7 @@ class SocialcardsController < ApplicationController
       s.create_providers(providers)
       render :json => {
         :success => true,
-        :redirect_url => redirect_url
+        :redirect_url => redirect_url(newSC: s.id)
       }
     else
       render :json => {:success => false}

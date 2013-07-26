@@ -50,11 +50,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_url
+  def redirect_url(options ={})
     if admin_signed_in?
-      admin_root_path
+      admin_root_path(options)
     elsif user_signed_in?
-      user_root_path
+      user_root_path(options)
     end
   end
 end

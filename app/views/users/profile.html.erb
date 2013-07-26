@@ -1,4 +1,66 @@
+<% if @newSC %>
+  <div class="full-page">
+    <div class="wash"></div>
+    <div class="share-wrap">
+      <div class="close">
+        close
+      </div>
+      <div class="share">
+        <div class="scwrap showwrap">
+          <div class="scouter">
+            <div class="sc">
+              <div class="left">
+                <%= image_tag @newSC.avatar.url(:thumb) %>
+              </div>
+              <div class="right">
+                <div class="inner">
+                  <h2><%= @newSC.name %></h2>
+                  <div class="title"><%= @newSC.title %></div>
+                  <div class="location"><%= @newSC.city %>, <%= @newSC.state %>, <%= @newSC.country %></div>
+                  <p class="desc"><%= @newSC.description %></p>
+                  <div class="links">
+                    <%= raw collect_links(@newSC) %>
+                    <div class="social-links">
+                      <% @newSC.providers.each do |s| %>
+                        <%= link_to s.url, :class => "social", 'data-network' => s.provider, :target => "_blank" do %>
+                          <%= image_tag "icon2_" + s.provider + "_36.png" %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sharing-links">
+          <h3>Sare your new Social Card!</h3>
+          <div class="links">
+            <a href="javascript:myPopup('https://www.facebook.com/sharer/sharer.php?u=<%= URI::encode(request.protocol + request.host_with_port + show_socialcard_path(@newSC.username)) %>')">
+              <%= image_tag 'facebook_001.jpg' %> Share
+            </a>
+            <a href="javascript:myPopup('http://twitter.com/share?url=<%= URI::encode(request.protocol + request.host_with_port + show_socialcard_path(@newSC.username)) %>&text=Check%20out%20my%20Social%20Card!')">
+              <%= image_tag 'Twitter_001.jpg' %> Tweet
+            </a>
+            <a href="javascript:myPopup('http://www.linkedin.com/shareArticle?mini=true&url=<%= URI::encode(request.protocol + request.host_with_port + show_socialcard_path(@newSC.username)) %>')">
+              <%= image_tag 'Linkedin_001.jpg' %> Share
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script type="text/javascript">
+    function myPopup(url) {
+      window.open( url, "shareWindow", "status = 1, height = 350, width = 600, resizable = 0" )
+    }
+
+    $('.close').click(function() {
+      $('.full-page').hide();
+    });
+  </script>
+<% end %>
 <div class="container profile-wrap">
   <div class="scs">
     <h2>check out your social cards</h2>

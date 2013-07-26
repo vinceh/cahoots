@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def profile
     @scs = current_user.socialcards.where("username IS NOT NULL").order("created_at").reverse
+
+    if params[:newSC]
+      @newSC = Socialcard.find(params[:newSC])
+    end
   end
 
   def saved_cards
