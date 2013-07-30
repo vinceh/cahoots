@@ -56,6 +56,12 @@ mixpanel.init("dd13d614e0f9563cac1569914f60020a");</script><!-- end Mixpanel -->
               </div>
               <%= f.submit 'Sign in' %>
             <% end %>
+            <div class="omni-sign-in">
+              <%= link_to user_omniauth_authorize_path(:twitter) do %>
+                <%= image_tag "Twitter_001.jpg" %>
+                Sign in
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>

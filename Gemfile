@@ -11,6 +11,8 @@ gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
 gem 'angularjs-rails'
+gem 'omniauth-twitter'
+
 
 group :development do
   gem "better_errors"

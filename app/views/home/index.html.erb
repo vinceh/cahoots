@@ -20,7 +20,15 @@
 
         <div><%= f.check_box :tos %> I agree to the <%= link_to "Terms of Service", terms_path %> and <%= link_to "Privacy Policy", privacy_path %></div>
 
-        <div><%= f.submit "Sign up" %></div>
+        <div>
+          <%= f.submit "Sign up" %>
+          <div class="omni-sign-in">
+            <%= link_to user_omniauth_authorize_path(:twitter) do %>
+              <%= image_tag "Twitter_001.jpg" %>
+              Sign up with Twitter
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

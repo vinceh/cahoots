@@ -5,7 +5,7 @@ Kahoots::Application.routes.draw do
     get 'controlpanel/stats', :to => 'admins#stats', :as => :admin_stats
   end
 
-  devise_for :users do
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"} do
     get 'profile', :to => 'users#profile', :as => :user_root
     get 'cards/saved', :to => 'users#saved_cards', :as => :user_saved_cards
     post 'cards/save/:id', :to => 'users#save_card', :as => :user_save_card
