@@ -1,0 +1,33 @@
+<div class="sc">
+  <div class="upper">
+    <div class="avatar"><%= image_tag @s.avatar.url(:thumb) %></div>
+
+    <h2><%= @s.name %></h2>
+    <div class="title"><%= @s.title %></div>
+    <div class="location"><%= @s.city %>, <%= @s.state %>, <%= @s.country %></div>
+    <hr/>
+    <p class="desc"><%= @s.description %></p>
+  </div>
+  <hr/>
+  <div class="social-links">
+    <% @s.providers.each do |s| %>
+      <%= link_to s.url, :class => "social", 'data-network' => s.provider, :target => "_blank" do %>
+        <%= image_tag s.provider + "_mobile.png" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="links">
+    <%= raw collect_links(@s) %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  mixpanel.track('sc-view', {'sc': <%= @s.id %>});
+
+  $('.social').click(function() {
+    mixpanel.track('sc-social-click', {
+      'sc': <%= @s.id %>,
+      'network': $(this).attr('data-network')
+    });
+  });
+</script>

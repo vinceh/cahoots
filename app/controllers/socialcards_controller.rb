@@ -14,7 +14,14 @@ class SocialcardsController < ApplicationController
   def show
     @s = Socialcard.where(:username => params[:username].downcase).first
     @show = true
-    render :layout => "viewsc"
+
+    render :layout => "mobile_view", :template => "socialcards/mobile_show"
+
+    #if mobile_device?
+    #  render :layout => "mobile_view", :template => "socialcards/mobile_show"
+    #else
+    #  render :layout => "viewsc"
+    #end
   end
 
   def iframe_show

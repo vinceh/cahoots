@@ -1218,3 +1218,81 @@ h2 {
   }
 }
 
+.mobile-view {
+  background: url("binding_dark.png");
+  color: white;
+  hr {
+    width: 25%;
+    margin: 35px auto;
+    border: 0;
+    border-top: 1px dashed #444;
+  }
+  .sc {
+    .upper {
+      padding-top: 40px;
+      text-align: center;
+      color: white;
+      .avatar {
+        text-align: center;
+        margin-bottom: 10px;
+        img {
+          border: 5px solid white;
+          width: 20%;
+        }
+      }
+      .title {
+        margin-bottom: 5px;
+      }
+      h2 {
+        color: white;
+        margin-bottom: 5px;
+      }
+      div {
+        font-size: 14px;
+        color: #ddd;
+      }
+      .desc {
+        font-style: italic;
+        color: #bbb;
+        padding: 0px 20px;
+        text-align: center;
+        line-height: 1.4em;
+        @include text-shadow(0 2px 0 black);
+      }
+    }
+    .links {
+      margin-top: 10px;
+      text-align: center;
+      a {
+        color: white;
+      }
+    }
+    .social-links {
+      margin-top: 15px;
+      text-align: center;
+      a {
+        padding: 2px;
+        img {
+          height: 35px;
+        }
+      }
+    }
+  }
+  .mobile-bottom {
+    text-align: center;
+    margin-top: 100px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    color: #aaa;
+    .creat-own {
+      color: $p;
+    }
+    .powered {
+      margin: 5px 0;
+      a {
+        color: $p;
+      }
+    }
+  }
+}
+
