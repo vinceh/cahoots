@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  rescue_from Exception, :with => :error_render_method
+
+  def error_render_method
+    respond_to do |type|
+      type.html { redirect_to "http://s3.amazonaws.com/cahoots404/404.html" }
+      type.all  { render :nothing => true, :status => 404 }
+    end
+    true
+  end
+
   def check_for_mobile
     session[:mobile_override] = params[:mobile] if params[:mobile]
     prepare_for_mobile if mobile_device?
